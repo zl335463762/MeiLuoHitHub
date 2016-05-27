@@ -32,7 +32,7 @@
     {
         result = str;
     }
-    NSLog(@"%@",result);
+    NSLog(@"navigationFloor方法中result：%@",result);
     
     if (_delegate) {
         [_delegate navFloorAction:result];
@@ -57,12 +57,8 @@
         NSDictionary *parmdic = @{@"JMSP_ID":productId,@"ZCSP":param};
 
         [_delegate homeAction:parmdic];
+        NSLog(@"homeAction方法：");
     }
-   
-    
-    
-
-
 }
 
 

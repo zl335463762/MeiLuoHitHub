@@ -416,7 +416,7 @@
             return 80;
             break;
         case 3:
-            if (indexPath.row == 2) {
+            if (indexPath.row == 1) {
                 return 30;
             }else{
                 return 95;
@@ -450,10 +450,13 @@
     if (section < 3) {
         return 1;
     }else if (section == 3){
+        return 2;
+        /*
         if (productList.count>3) {
-            return 3;
+            return 2;
         }
         return productList.count;
+        */
     }else if (section == 4){
         if (_downOrder.HWGSJ>0) {
             return 3;
@@ -517,13 +520,22 @@
             cell.nameLabel.text = dic[@"name"];
             cell.phoneLabel.text = dic[@"phone"];
             cell.addressLabel.text = dic[@"address"];
-            
             return cell;
         }
             break;
         case 3:{//清单
+            /*
+             2016.05.23  zz更新
+             */
+            if (productList.count < 3) {
+                
+            }
+            else {
             
-            if (indexPath.row == 2) {
+            
+            }
+            
+            if (indexPath.row == 1 ) {
                 static NSString *CellIdentifier = @"MLMoreTableViewCell" ;
                 MLMoreTableViewCell *cell = (MLMoreTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 if (cell == nil) {
@@ -531,7 +543,7 @@
                     cell = [array objectAtIndex:0];
                 }
                     cell.moreButton.selected = NO;
-                NSUInteger restcount = productList.count-2;
+                NSUInteger restcount = productList.count-1;
                     [cell.moreButton setTitle:[NSString stringWithFormat:@"还有%lu件  ",(unsigned long)restcount] forState:UIControlStateNormal];
                 [cell.moreButton addTarget:self action:@selector(moreButtonAction:) forControlEvents:UIControlEventTouchUpInside];
                 
@@ -693,6 +705,20 @@
     }
     
 }
+
+//2016.05.23zhou
+/*
+ 点击 商品清单执行方法 zz
+ */
+/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 4) {
+        NSLog(@"点击了商品清单");
+    }
+
+}
+*/
 
 /*
 #pragma mark - Navigation

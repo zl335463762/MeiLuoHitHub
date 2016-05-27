@@ -72,7 +72,6 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableTopH;
 
-
 @property (nonatomic,strong)MLBagFootView *footView;
 
 @end
@@ -119,7 +118,7 @@
     [_tableView registerNib:[UINib nibWithNibName:@"HFSOrderListHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:HEADER_IDENTIFIER01];
     
     //去掉弹簧效果
-//    _tableView.bounces = NO;
+    //_tableView.bounces = NO;
     //隐藏垂直的滚动条
     _tableView.showsVerticalScrollIndicator = NO;
  
@@ -243,8 +242,8 @@
         _baseTableView.frame = tframe;
         _tableView.frame = tframe;
     }
+    
     [self loadDateOrLike];
-
     [super viewDidAppear:YES];
     
 }
@@ -826,7 +825,7 @@
                                       //NSData 转NSString
                                       if (data && data.length>0) {
                                           NSString *result  =[[ NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                                          
+                                          NSLog(@"改变商品数量：%@",result);
                                           [self loadDateOrLike];
 
 //                                          dispatch_async(dispatch_get_main_queue(), ^{

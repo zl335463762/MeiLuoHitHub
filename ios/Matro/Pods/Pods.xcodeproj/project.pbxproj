@@ -2905,16 +2905,16 @@
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					278102C04C9D82366AB8B667D4AF9E34 = {
-						DevelopmentTeam = K7B37N4V6S;
+						DevelopmentTeam = 39QNYYYY23;
 					};
 					28431759A8D4940A0A982B235BF94522 = {
-						DevelopmentTeam = K7B37N4V6S;
+						DevelopmentTeam = 39QNYYYY23;
 					};
 					8EA7EB085A729BEBFA2E5C679A976D5E = {
-						DevelopmentTeam = K7B37N4V6S;
+						DevelopmentTeam = 39QNYYYY23;
 					};
 					C91A46012F8822DFDBAC8BC32FCC9001 = {
-						DevelopmentTeam = K7B37N4V6S;
+						DevelopmentTeam = 39QNYYYY23;
 					};
 				};
 			};

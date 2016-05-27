@@ -62,13 +62,7 @@
 
 
     UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"shouyesaoyisao"] style:UIBarButtonItemStylePlain target:self action:@selector(scanning)];
-    
-    
-    
     self.navigationItem.leftBarButtonItem = left;
-    
-    
-
     //添加边框和提示
     UIView   *frameView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_WIDTH, 28)] ;
     frameView.layer.borderWidth = 1;
@@ -130,16 +124,12 @@
     
 }
 
-
 - (void)navFloorAction:(NSString *)params{
     MLGoodsListViewController *vc = [[MLGoodsListViewController alloc]init];
     vc.searchString = params;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -159,16 +149,11 @@
 
 #pragma mark -- UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-
 {
-    
     return YES;
-    
 }
-
 //搜索器的UIView的点击事件
 -(void)handleSingleTap:(UITapGestureRecognizer *)sender
-
 {
     
     MLSearchViewController *searchViewController = [[MLSearchViewController alloc]init];
@@ -179,7 +164,6 @@
     UIViewController *rootViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
     [rootViewController addChildViewController:searchNavigationViewController];
     [rootViewController.view addSubview:searchNavigationViewController.view];
-
 }
 
 #pragma mark-SearchDelegate
@@ -247,7 +231,6 @@
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regTags
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:&error];
-    
     // 执行匹配的过程
     // NSString *webaddress=@"http://www.baidu.com/dd/adb.htm?adc=e12&xx=lkw&dalsjd=12";
     NSArray *matches = [regex matchesInString:webaddress
@@ -268,24 +251,18 @@
     }
     return @"";
 }
-
-
-
-
 #pragma mark- UIWebViewDelegate
-- (void) webViewDidStartLoad:(UIWebView *)webView
+- (void)webViewDidStartLoad:(UIWebView *)webView
 {
     NSLog(@"webViewDidStartLoad");
 }
-- (void) webViewDidFinishLoad:(UIWebView *)webView
+- (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [_loadingSpinner stopAnimating];
     self.loadingBGView.hidden = YES;
-    
-    
     [_hud hide:YES];
 }
-- (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     self.loadingBGView.hidden = YES;
     [_loadingSpinner stopAnimating];

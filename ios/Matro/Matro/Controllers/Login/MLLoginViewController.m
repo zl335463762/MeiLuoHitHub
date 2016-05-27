@@ -701,13 +701,6 @@
             
         }});
     
-    
-    [_hud show:YES];
-    _hud.mode = MBProgressHUDModeText;
-    _hud.labelText = @"qq登录";
-    [_hud hide:YES afterDelay:2];
-    
-    [self performSelector:@selector(dimissViewControllerAction) withObject:nil afterDelay:2.0f];
 }
 - (IBAction)wxLoginButtonAction:(id)sender {
     

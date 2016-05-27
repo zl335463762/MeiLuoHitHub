@@ -390,7 +390,7 @@
     
     if (userid) {
         NSString *urlStr = [NSString stringWithFormat:@"%@Ajax/products.ashx?op=addcart&jmsp_id=%@&spsl=%ld&userid=%@",SERVICE_GETBASE_URL,spid,(unsigned long)_shuliangStepper.value, userid];
-        
+        NSLog(@"加入购物车的URL：%@",urlStr);
         [[HFSServiceClient sharedClientNOT] GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [_hud show:YES];
             _hud.mode = MBProgressHUDModeText;
@@ -404,8 +404,7 @@
             _hud.labelText = @"请求失败";
             [_hud hide:YES afterDelay:2];
         }];
-        
-        
+
         if (!sender) {
             [self getAppDelegate].tabBarController.selectedIndex = 2;
             [self.navigationController popToRootViewControllerAnimated:YES];
@@ -473,17 +472,12 @@
         vc.modalPresentationStyle=UIModalPresentationOverCurrentContext;
         
     }else{
-        
         self.modalPresentationStyle=UIModalPresentationCurrentContext;
-        
     }
     [self presentViewController:vc  animated:YES completion:^(void)
      {
          vc.view.superview.backgroundColor = [UIColor clearColor];
-         
      }];
-    
-    
 }
 
 #pragma mark- 图片相关
@@ -662,9 +656,6 @@
    
     
 }
-
-
-
 
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

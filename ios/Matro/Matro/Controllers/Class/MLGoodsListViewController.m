@@ -228,8 +228,8 @@ static NSInteger page = 1;
         
     }
     return NO;
-    
 }
+
 #warning 先加分页index，之后还会加别的  关键字搜索
 - (void)getGoodsList{
 //    1. op：操作码
@@ -250,9 +250,7 @@ static NSInteger page = 1;
     if (_searchString) {
         if ([self IsChinese:_searchString]) {
             _searchString = [_searchString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-
         }
-        
     }
     else
     {
@@ -261,8 +259,8 @@ static NSInteger page = 1;
     
     
     //XSSL&false（销量）
-    //    XJ&true（价格正序）
-    //    XJ&false（价格倒序）
+    //XJ&true（价格正序）
+    //XJ&false（价格倒序）
     NSString *isck=@"";
     NSString *isgloble=@"";
     NSString *spflcode =@"";
@@ -275,15 +273,17 @@ static NSInteger page = 1;
         if ([filterparamDic objectForKey:@"sortstr"]) {
             sortstr = [filterparamDic objectForKey:@"sortstr"];
         }
+        
         if ([filterparamDic objectForKey:@"iskc"]) {
             isck = [filterparamDic objectForKey:@"iskc"];
         }
+        
         if ([filterparamDic objectForKey:@"zcsp"]) {
             isgloble = [filterparamDic objectForKey:@"zcsp"];
         }
+        
         if ([filterparamDic objectForKey:@"spflcode"]) {
             spflcode = [filterparamDic objectForKey:@"spflcode"];
-            
         }
         
         if ([filterparamDic objectForKey:@"spsb"]) {
@@ -312,7 +312,7 @@ static NSInteger page = 1;
     //SPSB 品牌名称 sort 是字符串  jgs开始价格，jpe 结束价格
     
     NSString *str = [NSString stringWithFormat:@"%@Ajax/search/search.ashx?op=item_sp&spflcode=%@&tpgg=M&sort=%@&spsb=&pagesize=20&pageindex=%ld&key=%@&jgs=%@&jge=%@&iskc=%@&zcsp=%@&ppcode=%@",SERVICE_GETBASE_URL,spflcode,sortstr, (long)page,_searchString,jgs,jge,isck,isgloble,ppcode];
-    
+    NSLog(@"商品列表的URL：%@",str);
     [[HFSServiceClient sharedJSONClient] GET:str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (page==1) {
@@ -326,7 +326,8 @@ static NSInteger page = 1;
                 NSDictionary *resdic = (NSDictionary*)responseObject;
                 ary = (NSArray *)resdic[@"splist"];
                 NSNumber *count = resdic[@"count"];
-                if ([count isEqualToNumber:@0] ) {
+                
+                if ([count isEqualToNumber:@0]) {
                     MJRefreshAutoNormalFooter *footer = (MJRefreshAutoNormalFooter *)self.tableView.footer;
                     footer.stateLabel.text = @"没有更多了";
                 }
@@ -338,8 +339,6 @@ static NSInteger page = 1;
             if (ary && ary.count>0) {
                 [_productList addObjectsFromArray:ary];
             }
-            
-            
         }
         page ++;
         
@@ -552,7 +551,7 @@ static NSInteger page = 1;
             cell.productNameLabel.text =str?:@"";
         }
         float price = [tempdic[@"XJ"] floatValue];
-        cell.currentPriceLabel.text =[NSString stringWithFormat:@"￥%.2f",price] ;
+        cell.currentPriceLabel.text =[NSString stringWithFormat:@"￥%.2f",price];
     }
     
     return cell;
@@ -613,6 +612,9 @@ static NSInteger page = 1;
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     float width = (collectionView.bounds.size.width - 3 * CollectionViewCellMargin) / 2;
     float height = width / 290 * 408;
+    
+    NSLog(@"商品卡片显示 宽度为：%g,高度为：%g",width,height);
+    
     return CGSizeMake(width, height);
 }
 

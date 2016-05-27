@@ -142,7 +142,6 @@
 -(void)handleSingleTap:(UITapGestureRecognizer *)sender
 
 {
-    
     MLSearchViewController *searchViewController = [[MLSearchViewController alloc]init];
     searchViewController.delegate = self;
     searchViewController.activeViewController = self;
@@ -151,8 +150,6 @@
     UIViewController *rootViewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
     [rootViewController addChildViewController:searchNavigationViewController];
     [rootViewController.view addSubview:searchNavigationViewController.view];
-    
-    
 }
 
 
@@ -176,9 +173,6 @@
         _hud.labelText = @"请求失败";
         [_hud hide:YES afterDelay:2];
     }];
-    
-    
-    
 }
 #pragma mark- 获取二级、三级分类
 - (void)loadDateSubClass:(NSInteger)index{
@@ -289,13 +283,9 @@
     tap.delegate = self;
     headerView.headerImageView.tag = section;
     [headerView.headerImageView addGestureRecognizer:tap];
-    
-    
     [headerView.headerImageView sd_setImageWithURL:headerinfo.SRC placeholderImage:PLACEHOLDER_IMAGE];
     return headerView;
 }
-
-
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
@@ -354,13 +344,11 @@
         result = [result stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         
         vc.filterParam = @{@"spflcode":result?:@""};
-        NSLog(@"%@",vc.filterParam);
+        NSLog(@"vc.filterParam++++%@;result值为：%@",vc.filterParam,result);
         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
         self.hidesBottomBarWhenPushed = NO;
-        
     }
-
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -377,7 +365,7 @@
 
 
 #pragma mark- YAScrollSegmentControlDelegate
-- (void)didSelectItemAtIndex:(NSInteger)index;{
+- (void)didSelectItemAtIndex:(NSInteger)index{
 
     NSLog(@"%@",_topScrollSegmentControl.buttons[index]);
     
@@ -405,7 +393,7 @@
         NSLog(@"%@",qrString);
         
         //扫除结果后处理字符串
-        //        [aqrvc dismissViewControllerAnimated:NO completion:nil];
+        //[aqrvc dismissViewControllerAnimated:NO completion:nil];
         [aqrvc dismissViewControllerAnimated:NO completion:^{
             if (qrString.length>0) {
                 NSString *JMSP_ID = [self jiexi:@"JMSP_ID" webaddress:qrString];

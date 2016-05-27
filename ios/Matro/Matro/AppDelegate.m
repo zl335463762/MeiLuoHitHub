@@ -89,8 +89,9 @@
     [UMSocialData setAppKey:@"572b140d67e58e4b9e001422"];
     
     
-    [UMSocialQQHandler setQQWithAppId:@"1104574278" appKey:@"GkZ21osLML8M3cK2" url:@"http://www.matrojp.com/"];
+    [UMSocialQQHandler setQQWithAppId:@"1105292896" appKey:@"PDZl84sGb8GzJSwo" url:@"http://www.matrojp.com/"];
     //设置微信AppId、appSecret，分享url
+    
     [UMSocialWechatHandler setWXAppId:@"wx5aced428a6ce270e" appSecret:@"54e1071ad99428a88330eee8489fb37c" url:@"http://www.matrojp.com/"];
     [self buildTabBarController];
     

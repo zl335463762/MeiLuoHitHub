@@ -309,8 +309,7 @@ static CGFloat kHeight = 0;
 - (void)keyboardWasShown:(NSNotification *)notification {
     //获取键盘高度，在不同设备上，以及中英文下是不同的
     CGFloat kbHeight = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-    
-    
+
     //将视图上移计算好的偏移
     if (_historySearchTextArray.count>5) {
         [UIView animateWithDuration:0.1 animations:^{
@@ -330,14 +329,8 @@ static CGFloat kHeight = 0;
             CGSize size = self.rootScrollView.contentSize;
             self.rootScrollView.contentSize = CGSizeMake(size.width,size.height-kHeight);
             kHeight = 0;
-            
         }];
     }
- 
 }
-
-
-
-
 
 @end
